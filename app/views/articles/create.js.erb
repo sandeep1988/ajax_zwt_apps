@@ -1,0 +1,12 @@
+<% if @article.errors.count == 0 %>
+
+	$('#new_article').remove();
+	$('#new_article_link').show();
+	$('#articles').append('<%= j render("index", :article => @article) %>');
+
+<% else %>
+
+	$('.new_article').remove();
+	$('#new_article_link').after('<%= j render("form") %>');
+
+<% end %>
