@@ -24,6 +24,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+  @article = Article.find(params[:id])
+    respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   # POST /articles
@@ -46,14 +51,16 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @article = Article.find(params[:id])
     respond_to do |format|
       if @article.update(article_params)
-        format.js
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

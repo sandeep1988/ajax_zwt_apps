@@ -12,11 +12,11 @@
 
   <tbody id="articles">
     <% @articles.each do |article| %>
-    <%= render "index", :article => article %>
+    <%= render "article", :article => article %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Article', new_article_path , :remote => true, :id => "new_article_link" %>
+<%= link_to 'New Article', new_article_path , :remote => true, :id => "new_article_link" , class: "btn" %>

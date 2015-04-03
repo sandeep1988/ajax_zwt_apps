@@ -2,7 +2,7 @@
 
 	$('#new_article').remove();
 	$('#new_article_link').show();
-	$('#articles').append('<%= j render("index", :article => @article) %>');
+	$('#articles').append('<%= j render("article", :article => @article) %>');
 
 <% else %>
 
