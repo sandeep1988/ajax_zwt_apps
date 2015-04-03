@@ -1,0 +1,11 @@
+<% if @article.errors.count == 0 %>
+
+$('#new_article_link').show()
+$('#edit_article_<%= @article.id %>').remove();
+$('#article_<%= @article.id %>').replaceWith('<%= j render @article %>')
+
+<% else %>
+
+$('#edit_article_<%= @article.id %>').remove();
+$('#new_article_link').after('<%= j render("form") %>');
+<% end %>

@@ -1,0 +1,7 @@
+<tr id="article_<%= article.id %>">
+<td><%= article.title %></td>
+        <td><%= link_to 'Show', article , class: "btn"%></td>
+        <td><%= link_to 'Edit', edit_article_path(article), :remote => true, class: "btn" %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, :remote => true , class: "btn btn-danger"%></td>
+        <!-- , data: { confirm: 'Are you sure?' }  -->
+</tr>
