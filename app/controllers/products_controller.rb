@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /products
   # GET /products.json
   def index
@@ -101,5 +101,13 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit([:name, :price, :category_id, :color => []])
+    end
+
+    def sort_column
+      Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

@@ -15,10 +15,6 @@
 <% @products.all.each do |product| %>
 <%= render "product", :product => product %>
 <% end %>
-<%= will_paginate @products %>
 </tbody>
 </table>
-
-<br />
-
-<%#= link_to 'New Product', new_product_path, :remote => true, :id => "new_product_link" %>
+<%= will_paginate @products %>
