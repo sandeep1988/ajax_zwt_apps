@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.paginate(:per_page => 4, :page => params[:page])
   respond_to do |format|
       format.js
     format.html # index.html.erb
@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
   end
 end
 
-  # GET /categories/1
-  # GET /categories/1.json
+  # GET /categories/4
+  # GET /categories/4.json
   def show
   @categoy = Category.find(params[:id])
 
@@ -27,7 +27,7 @@ end
 
   # GET /categories/newrole
   def new
-    @categories = Category.all
+    @categories = Category.paginate(:per_page => 4, :page => params[:page])
     @category = Category.new
     respond_to do |format|
         format.html
@@ -35,8 +35,9 @@ end
     end
   end
 
-  # GET /categories/1/edit
+  # GET /categories/4/edit
   def edit
+    @categories = Category.paginate(:per_page => 4, :page => params[:page])
   @category = Category.find(params[:id])
     respond_to do |format|
       format.js
@@ -47,7 +48,7 @@ end
   # POST /categories
   # POST /categories.json
   def create
-    @categories = Category.all
+    @categories = Category.paginate(:per_page => 4, :page => params[:page])
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -62,9 +63,10 @@ end
     end
   end
 
-  # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
+  # PATCH/PUT /categories/4
+  # PATCH/PUT /categories/4.json
   def update
+    @categories = Category.paginate(:per_page => 4, :page => params[:page])
     respond_to do |format|
       if @category.update(category_params)
         format.js
@@ -78,8 +80,8 @@ end
     end
   end
 
-  # DELETE /categories/1
-  # DELETE /categories/1.json
+  # DELETE /categories/4
+  # DELETE /categories/4.json
   def destroy
     @category.destroy
     respond_to do |format|
@@ -98,5 +100,14 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :role)
-end
+    end
+
+    def sort_column
+      Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
 end

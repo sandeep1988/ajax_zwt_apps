@@ -3,4 +3,5 @@
 <td><%= category.role %></td>
         <td><%= link_to 'Edit', edit_category_path(category), :remote => true , class: "btn" %></td>
         <td><%= link_to 'Destroy', category, method: :delete, :remote => true , class: "btn btn-danger"%></td>
-</tr>s
+</tr>
+<%= will_paginate @categories %>

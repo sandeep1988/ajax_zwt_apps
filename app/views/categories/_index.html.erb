@@ -1,3 +1,4 @@
+<div class="category-list">
 <h1>Listing Category</h1>
 <table class="table table-bordered table-striped">
   <thead>
@@ -7,10 +8,16 @@
     </tr>
   </thead>
   <tbody id="categories">
-    <% Category.all.each do |category| %>
+    <% @categories.each do |category| %>
     <%= render "categories/category", :category => category %>
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @categories %>
+</div>
 
-<%#= will_paginate(@categories) %>
+<script>
+$(function(){
+  $('.pagination a').attr('data-remote', 'true')
+});
+</script>

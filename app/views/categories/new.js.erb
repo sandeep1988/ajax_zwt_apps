@@ -1,1 +1,3 @@
-$('#new_category_link').hide().after('<%= j render("form") %>');
+$('#new_category_link').hide();
+$(".category-list").remove();
+$('#new_category_link').after('<%= j render("form") %>');
