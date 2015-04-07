@@ -1,3 +1,4 @@
+<div class="product-list">
 <h1>Listing products</h1>
 
 <table class="table table-bordered table-striped">
@@ -18,3 +19,10 @@
 </tbody>
 </table>
 <%= will_paginate @products %>
+</div>
+
+<script>
+$(function(){
+   $('.pagination a').attr('data-remote', 'true')
+});
+</script>

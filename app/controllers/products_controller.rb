@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-  @products = Product.all.paginate(:per_page => 3, :page => params[:page])
+  @products = Product.all.paginate(:per_page => 4, :page => params[:page])
     
     respond_to do |format|
       format.js
@@ -14,8 +14,8 @@ class ProductsController < ApplicationController
   end
 end
 
-  # GET /products/1
-  # GET /products/1.json
+  # GET /products/4
+  # GET /products/4.json
   def show
   @product = Product.find(params[:id])
 
@@ -28,7 +28,7 @@ end
 
   # GET /products/new
   def new
-    @products = Product.all.paginate(:per_page => 3, :page => params[:page])
+    @products = Product.all.paginate(:per_page => 4, :page => params[:page])
     @product = Product.new
     respond_to do |format|
         format.html
@@ -36,10 +36,10 @@ end
     end
   end
 
-  # GET /products/1/edit
+  # GET /products/4/edit
   def edit
-    @products = Product.all.paginate(:per_page => 3, :page => params[:page])
-  @product = Product.find(params[:id])
+    @products = Product.all.paginate(:per_page => 4, :page => params[:page])
+    @product = Product.find(params[:id])
     respond_to do |format|
       format.js
         format.html
@@ -49,7 +49,7 @@ end
   # POST /products
   # POST /products.json
   def create
-    @products = Product.all.paginate(:per_page => 3, :page => params[:page])
+    @products = Product.all.paginate(:per_page => 4, :page => params[:page])
     @product = Product.new(product_params)
     @product.color = params[:product][:color].reject! { |c| c.empty? }
     respond_to do |format|
@@ -65,9 +65,10 @@ end
     end
     end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
+  # PATCH/PUT /products/4
+  # PATCH/PUT /products/4.json
   def update
+    @products = Product.all.paginate(:per_page => 4, :page => params[:page])
     respond_to do |format|
       if @product.update(product_params)
         format.js
@@ -81,8 +82,8 @@ end
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
+  # DELETE /products/4
+  # DELETE /products/4.json
   def destroy
     @product.destroy
     respond_to do |format|
