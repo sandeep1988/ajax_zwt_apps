@@ -1,20 +1,4 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<div class="container">
-  <div class="well">
-  <%= link_to 'New Article', new_article_path , :remote => true, :id => "new_article_link" , class: "btn" %>
-  </div>
-<h1>Listing Articles</h1>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <td>&nbsp;</td>
-    </tr>
-  </thead>
-  <tbody id="articles">
-    <% @articles.each do |article| %>
-    <%= render "article", :article => article %>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate(@articles) %>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+

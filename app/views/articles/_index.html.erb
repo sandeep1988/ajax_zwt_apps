@@ -1,7 +1,16 @@
-<tr id="index_<%= article.id %>">
-<td><%= article.title %></td>
-        <td><%= link_to 'Show', article , class: "btn"%></td>
-        <td><%= link_to 'Edit', edit_article_path(article), remote: true, class: "btn" %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, :remote => true , class: "btn btn-danger"%></td>
-        <!-- , data: { confirm: 'Are you sure?' }  -->
-</tr>
+<h1>Listing Products</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody id="articles">
+    <% @articles.each do |article| %>
+    <%= render "article", :article => article %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate(@articles) %>

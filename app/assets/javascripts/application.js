@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $("#articles a, #articles .pagination a").on('click', function() {
+    $.getScript(this.href);
+    alert(this.href);
+    return false;
+  });
+});

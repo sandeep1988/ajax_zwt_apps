@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
+  helper_method :sort_column, :sort_direction
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.paginate(:per_page => 03, :page => params[:page])
+    @articles = Article.all
     respond_to do |format|
+      format.js
     format.html # index.html.erb
     format.json { render json: @articles }
     format.js
@@ -26,6 +28,7 @@ end
 
   # GET /articles/new
   def new
+    @articles = Article.paginate(:per_page => 5, :page => params[:page])
     @article = Article.new
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +49,7 @@ end
   # POST /articles
   # POST /articles.json
   def create
+    #@articles = Article.paginate(:per_page => 5, :page => params[:page])
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
@@ -66,10 +70,11 @@ end
     @article = Article.find(params[:id])
     respond_to do |format|
       if @article.update(article_params)
+        format.js
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
-        format.js
       else
+        format.js
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
         format.js
@@ -98,4 +103,13 @@ end
     def article_params
       params.require(:article).permit(:title)
     end
+
+    def sort_column
+      Article.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
 end
