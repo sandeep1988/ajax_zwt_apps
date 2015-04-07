@@ -1,0 +1,12 @@
+<% if @category.errors.count == 0 %>
+
+	$('#new_category').remove();
+	$('#new_category_link').show();
+	$('#categories').append('<%= j render("category", :category => @category) %>');
+
+<% else %>
+
+	$('.new_category').remove();
+	$('#new_category_link').after('<%= j render("form") %>');
+
+<% end %>

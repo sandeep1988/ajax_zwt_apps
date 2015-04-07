@@ -1,0 +1,9 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="container">
+  <div class="well">
+  <%= link_to 'Category Management', new_category_path , :id => "new_category_link", :remote => true, class: "btn" %>
+  <%= link_to 'Product Management', new_product_path , :id => "new_product_link", :remote => true, class: "btn" %>
+  </div>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+

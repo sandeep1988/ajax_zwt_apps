@@ -1,0 +1,13 @@
+<% if @product.errors.count == 0 %>
+
+$('#new_product_link').show()
+$('#edit_product_<%= @product.id %>').remove();
+$('#product_<%= @product.id %>').replaceWith('<%= j render @product %>')
+
+<% else %>
+
+$('#edit_product_<%= @product.id %>').remove();
+$('#new_product_link').after('<%= j render("form") %>');
+
+<% end %>
+
