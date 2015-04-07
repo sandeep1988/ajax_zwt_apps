@@ -1,3 +1,5 @@
 $('#new_product_link').hide();
 $(".product-list").remove();
+$('#new_product').hide();
+$(".product-list").show();
 $('#new_product_link').after('<%= j render("form") %>');
