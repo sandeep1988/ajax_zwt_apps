@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $("#products th a, #products .pagination a").on('click', function() {
+     $.get(this.href, null, null, 'script');
+    return false;
+  });
+  
+  $("#categories th a, #categories .pagination a").on('click', function() {
+     $.get(this.href, null, null, 'script');
+    return false;
+    });
+});

@@ -1,3 +1,5 @@
 $('#new_category_link').hide();
 $('.category-list').remove();
+$('#new_category').hide();
+$('#edit_category_<%= @category.id %>').remove();
 $('#new_category_link').after('<%= j render("form") %>');

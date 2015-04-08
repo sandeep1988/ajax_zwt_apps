@@ -1,12 +1,13 @@
 <% if @category.errors.count == 0 %>
 
-$('#new_category_link').show()
+$('#new_category_link').show();
 $('#edit_category_<%= @category.id %>').remove();
 $('#category_<%= @category.id %>').replaceWith('<%= j render @category %>')
 
 <% else %>
 
 $('#edit_category_<%= @category.id %>').remove();
+$('#edit_category').hide();
 $('#new_category_link').after('<%= j render("form") %>');
 
 <% end %>

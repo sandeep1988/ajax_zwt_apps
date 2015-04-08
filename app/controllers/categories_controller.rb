@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.paginate(:per_page => 4, :page => params[:page])
+    @categories = Category.paginate(:per_page => 1, :page => params[:page])
   respond_to do |format|
       format.js
     format.html # index.html.erb
@@ -27,7 +27,7 @@ end
 
   # GET /categories/newrole
   def new
-    @categories = Category.paginate(:per_page => 4, :page => params[:page])
+    @categories = Category.paginate(:per_page => 1, :page => params[:page])
     @category = Category.new
     respond_to do |format|
         format.html
@@ -37,7 +37,7 @@ end
 
   # GET /categories/4/edit
   def edit
-    @categories = Category.paginate(:per_page => 4, :page => params[:page])
+    @categories = Category.paginate(:per_page => 1, :page => params[:page])
   @category = Category.find(params[:id])
     respond_to do |format|
       format.js
@@ -48,7 +48,7 @@ end
   # POST /categories
   # POST /categories.json
   def create
-    @categories = Category.paginate(:per_page => 4, :page => params[:page])
+    @categories = Category.paginate(:per_page => 1, :page => params[:page])
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -66,7 +66,7 @@ end
   # PATCH/PUT /categories/4
   # PATCH/PUT /categories/4.json
   def update
-    @categories = Category.paginate(:per_page => 4, :page => params[:page])
+    @categories = Category.paginate(:per_page => 1, :page => params[:page])
     respond_to do |format|
       if @category.update(category_params)
         format.js
