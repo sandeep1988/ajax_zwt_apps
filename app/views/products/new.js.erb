@@ -1,5 +1,6 @@
 $('#new_product_link').hide();
 $(".product-list").remove();
 $('#new_product').hide();
-$(".product-list").show();
+$('#edit_product_<%= @product.id %>').remove();
+$('#edit_product').hide();
 $('#new_product_link').after('<%= j render("form") %>');

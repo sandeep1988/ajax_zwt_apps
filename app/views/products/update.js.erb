@@ -7,6 +7,7 @@ $('#product_<%= @product.id %>').replaceWith('<%= j render @product %>')
 <% else %>
 
 $('#edit_product_<%= @product.id %>').remove();
+$('#edit_product').hide();
 $('#new_product_link').after('<%= j render("form") %>');
 
 <% end %>

@@ -12,3 +12,8 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 
 
+<script>
+$(function(){
+   $('.pagination a').attr('data-remote', 'true')
+});
+</script>
